@@ -29,8 +29,6 @@
 
 		// setup the cube
 		var geometry = new THREE.BoxGeometry();
-		//var geometry2 = new THREE.BoxGeometry();
-		//var geometry3 = new THREE.BoxGeometry();
 		var geometry4 = new THREE.BoxGeometry();
 		var geometry5 = new THREE.BoxGeometry();
 
@@ -57,19 +55,13 @@
 		});
 
 		var cube = new THREE.Mesh(geometry, material);
-		//var cube2 = new THREE.Mesh(geometry2, material2);
-		//var cube3 = new THREE.Mesh(geometry3, material3);
 		var cube4 = new THREE.Mesh(geometry4, material4);
 		var cube5 = new THREE.Mesh(geometry5, material5);
 
-		//geometry2.translate(-1.5, -1.5, 0);
-		//geometry3.translate(1.5, 1.5, 0);
 		geometry4.translate(1.5, -1.5, 0);
 		geometry5.translate(-1.5, 1.5, 0);
 
 		scene.add(cube);
-		//scene.add(cube2);
-		//scene.add(cube3);
 		scene.add(cube4);
 		scene.add(cube5);
 
@@ -92,8 +84,6 @@
 							THREE.Color(0x0000FF)
 					}
 				};
-
-
 
 				geometry1 = new THREE.BoxGeometry(1, 1, 1);
 				material1 = new THREE.ShaderMaterial({
@@ -127,7 +117,8 @@
 							THREE.Color(0x0000FF)
 					},
 					u_resolution: {
-						type: 'vec2', value: new THREE.Vector2()
+						type: 'vec2', value: new 
+							THREE.Vector2()
 					}
 				};
 				uniforms2.u_resolution.value.x = renderer.domElement.width;
