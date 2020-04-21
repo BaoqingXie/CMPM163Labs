@@ -12,7 +12,7 @@ Lab3:
 video: https://drive.google.com/open?id=1M7jcxzOoDhuZ2sfECTCjvgTY8vWr_xJV
 
 Cubes explaining:
-1. The cube in the middel: this is cube from the part1 instruction. I did not change anything for that.
+1. The cube in the middle: this is cube from the part1 instruction. I did not change anything for that.
 2. the spaning blue cube: this is the cube that I made for the part1, I changed its colors to blue, and change metalness to 0.9 and metalness ato 0.5.
 3. the spaning red cube: this is also for the part1, I changed the colors to red and change transparency to 0.8.
 4. the right cube: this is cube from the part2 instruction. I change it colors to 0xAF0FAF and 0x0000FF.
