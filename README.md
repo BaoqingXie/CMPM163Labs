@@ -26,7 +26,7 @@ Video:   https://drive.google.com/open?id=1ny9-C2TpoFOmApPTDefOQVnJK0uxH4Vr
 Answers for part1:
 1. (a) Floor(7u).
 2. (b)Floor(7-7v).
-2. (c)Answer is Grey. From the Equation Above, Floor(7*0.375) = 2 and Floor(7-7*0.25) = 5 so (2,5), which is grey in the texture.
+2. (c)Answer is Grey. From the Equation Above, Floor(7 * 0.375) = 2 and Floor(7 - 7 * 0.25) = 5, so (2,5), which is grey in the texture.
 
 Cubes explaining:
 1. The left cube is from the part A, which contain the texture, it is without the normal map.
