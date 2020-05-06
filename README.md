@@ -35,3 +35,13 @@ Cubes explaining:
 4. the right cube is from the partB, it was built with the shader that instruction provided.
 5. the button tiled cube is from the partB, it was built with my shader that samples the texture to four parts. the formula:   gl_FragColor = texture2D(texture2, 2.0*mod(vUv, 0.5));. In the shader, I first used the mod function to make texture four different parts, then I let the result of that multiple by 2, which scale the result and let it distributed properly.
 
+---------------------------------------------------------------------------
+Lab5: 
+
+Video for part2a:   https://drive.google.com/open?id=1x8mGjAlx4qAVpWCt-y5adicWK1g9NeJ6
+Video for part2b:   https://drive.google.com/open?id=1GlUoUxzUdMJYG9Ho0ny3miR1aRvm2nlj
+Video for my particle effect: https://drive.google.com/open?id=1g7ycUtHM3ei67OAhWXduOYUHY5UwDKfJ
+
+Particle Effect explaining: I got the inspiration from DNA. So I used sin and cos function to creat a DNA image. And the animation is to zoom in the DNA and break the DNA. In order to do that, I add few more velocity and change the animate function according to each particle position.
+
+
