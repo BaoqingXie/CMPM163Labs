@@ -39,8 +39,11 @@ Cubes explaining:
 Lab5: 
 
 Video for part2a:   https://drive.google.com/open?id=1x8mGjAlx4qAVpWCt-y5adicWK1g9NeJ6
+
 Video for part2b:   https://drive.google.com/open?id=1GlUoUxzUdMJYG9Ho0ny3miR1aRvm2nlj
+
 Video for my particle effect: https://drive.google.com/open?id=1g7ycUtHM3ei67OAhWXduOYUHY5UwDKfJ
+
 
 Particle Effect explaining: I got the inspiration from DNA. So I used sin and cos function to creat a DNA image. And the animation is to zoom in the DNA and break the DNA. In order to do that, I add few more velocity and change the animate function according to each particle position.
 
