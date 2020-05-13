@@ -44,4 +44,25 @@ Video for my particle effect: https://drive.google.com/open?id=1g7ycUtHM3ei67OAh
 
 Particle Effect explaining: I got the inspiration from DNA. So I used sin and cos function to creat a DNA image. And the animation is to zoom in the DNA and break the DNA. In order to do that, I add few more velocity and change the animate function according to each particle position.
 
+---------------------------------------------------------------------------
+Lab6:
+
+Screen Shot: ![](ImagesForReadMe/Lab6.png)
+
+Definitions of different lights:
+
+2. 
+spotlight: Spot light behave like a flashlight or headlamps on a car. They point in a direction based on their transform rotation and illuminate all objects within a cone.
+directional light: The directional light behave like a sun. Directional lights effects all the objects in the scene, lighting them based on the direction of the light set by the game object rotation. position in the scene is irrelevant.
+point light: The point light illuminates objects in the scene based on the light's position in the scene. Rotation has no influence on the light as this light shines equally in all directions.
+Area light: Area lights shine in all directions to one side of rectangular plane.
+
+3. My table picture: ![](ImagesForReadMe/table.jpg)
+My material picture: ![](ImagesForReadMe/Material.png)
+I made this material by first taking a picture of the wood texture of my table. Then I change the shader for my material to specualar since this is a wood material there is no need to add metallic. Finally I ajust the smoothness to 0.1 to make it look more like my table.
+
+4. I added two textures in the scene. One is the wall texture, another one is carpet texture. I used wall texutre to creat three walls in the scene, and I used carpet texture to creat floor in the scene.
+
+5. I added a skybox which used a HDR map(downloaded from HDRIHaven.com) in the scene. It is a beach skybox. That means I missed the beach a lot during the quarantine.
+
 
