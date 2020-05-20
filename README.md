@@ -68,4 +68,21 @@ I made this material by first taking a picture of the wood texture of my table. 
 
 5. I added a skybox which used a HDR map(downloaded from HDRIHaven.com) in the scene. It is a beach skybox. That means I missed the beach a lot during the quarantine.
 
+------------------------------------------------------------------------------------------------------
+Lab7:
+
+1. ![](ImagesForReadMe/Lab71.jpg)
+2. ![](ImagesForReadMe/Lab72.png)
+3. video: https://drive.google.com/open?id=1sCkC5-S92tGONf_OJ-RAqKI15DRbr8nb
+4. video: https://drive.google.com/open?id=1c_onqfD0zTPeZAiP-LlbDFpj_U8jHoVS
+
+explain: for the creative, I made a blood lake which is in the mountain, And I added the particle effects like snow in the sky.
+
+The answer from my partner:
+
+Which part did they do? three.js
+Which part of a tutorial did your partner find most challenging? creative
+Which part of a tutorial did your partner find most interesting? creating the wave
+
+
 
