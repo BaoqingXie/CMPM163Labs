@@ -83,6 +83,7 @@ The answer from my partner:
 Which part did they do? three.js
 Which part of a tutorial did your partner find most challenging? creative
 Which part of a tutorial did your partner find most interesting? creating the wave
+We did not help each other in the lab.
 
 
 
