@@ -71,7 +71,7 @@ I made this material by first taking a picture of the wood texture of my table. 
 ------------------------------------------------------------------------------------------------------
 Lab7:
 
-1. ![](ImagesForReadMe/Lab71.jpg)
+1. ![](ImagesForReadMe/Lab71.png)
 2. ![](ImagesForReadMe/Lab72.png)
 3. video: https://drive.google.com/open?id=1sCkC5-S92tGONf_OJ-RAqKI15DRbr8nb
 4. video: https://drive.google.com/open?id=1c_onqfD0zTPeZAiP-LlbDFpj_U8jHoVS
