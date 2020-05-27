@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Lab 8: Procedural Generation</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="../three.js-master/build/three.js"></script>
+    <script id="vertexShader" type="x-shader/x-vertex">
+        // code for vertex shader
+        uniform sampler2D heightMap1;
+       varying vec2 vUv;
+
+       void main() {
+    vUv = uv;
+    vec4 modelViewPosition = modelViewMatrix * vec4(position, 1.0);
+    gl_Position = projectionMatrix * modelViewPosition;
+}
+
+
+   </script>
+
+    <script id="fragmentShader" type="x-shader/x-fragment">
+        // code for fragment shader
+        uniform sampler2D texture1;
+        varying vec2 vUv;
+        void main() {
+            gl_FragColor = texture2D(texture1, 2.0*mod(vUv, 0.5));
+        }
+   </script>
+
+
+    <script>
+        // setup the scene
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        var renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+        camera.position.z = 10;
+        camera.position.y = 3;
+        camera.lookAt(0, 0, 0);
+
+        // PlaneGeometry
+        var roaduniforms = {
+            texture1: { type: "t", value: THREE.ImageUtils.loadTexture("sky.jpg") },
+        };
+
+        var Roadmaterial = new THREE.ShaderMaterial({
+            uniforms: roaduniforms,
+            vertexShader: document.getElementById('vertexShader').textContent, fragmentShader: document.getElementById('fragmentShader').textContent
+        });
+        var planeSize = 20;
+        var p = new THREE.PlaneGeometry(planeSize, planeSize, 100, 100);
+        var plane = new THREE.Mesh(p, Roadmaterial);
+        var planeCenter = new THREE.Vector3(0, -parseInt(planeSize / 4), -planeSize / 2);
+        plane.position.z = planeCenter.z;
+        plane.position.y = 4.9;
+        plane.rotation.x = Math.PI / 2;
+        scene.add(plane);
+
+        // PlaneGeometry
+        const mat = new THREE.MeshPhongMaterial({ color: 0x4f4f4f, Shininess: 100, side: THREE.DoubleSide });
+        var p = new THREE.PlaneGeometry(planeSize, planeSize, 100, 100);
+        var plane1 = new THREE.Mesh(p, mat);
+        plane1.position.z = planeCenter.z;
+        plane1.position.y = planeCenter.y;
+        plane1.rotation.x = Math.PI / 2;
+        scene.add(plane1);
+
+        // PlaneGeometry
+        const mat1 = new THREE.MeshPhongMaterial({ color: 0x0077be, Shininess: 100, side: THREE.DoubleSide });
+        var p = new THREE.PlaneGeometry(5, 20, 100, 100);
+        var plane2 = new THREE.Mesh(p, mat1);
+        plane2.position.z = -10;
+        plane2.position.x = 7.5;
+        plane2.position.y = planeCenter.y+0.11;
+        plane2.rotation.x = Math.PI / 2;
+        scene.add(plane2);
+
+        var matShader;
+        mat1.onBeforeCompile = (shader) => {
+            shader.uniforms.time = { value: 0 }
+            shader.vertexShader = `
+		        uniform float time;
+		    ` + shader.vertexShader
+
+            const token = '#include <begin_vertex>'
+            const customTransform = `
+		        vec3 transformed = vec3(position);
+		        float freq = 5.0;
+		        float amp = 0.1;
+		        float angle = (time + position.x)*freq;
+		        transformed.z += sin(angle)*amp;
+                objectNormal = normalize(vec3(-amp * freq * cos(angle),0.0,1.0));
+                vNormal = normalMatrix * objectNormal;
+
+		`
+            shader.vertexShader = shader.vertexShader.replace(token, customTransform)
+            matShader = shader
+        }
+
+        // add the lights all around the city
+        for (var a = 270; a < 270 * 2; a += 100) {
+            var light = new THREE.PointLight(0xffffff, 1, planeSize * 1.5);
+            light.position.set(
+                planeSize * Math.cos(THREE.MathUtils.degToRad(a)),
+                planeCenter.y + planeSize / 2,
+                planeCenter.z + planeSize * Math.sin(THREE.MathUtils.degToRad(a)));
+            scene.add(light);
+        }
+
+        //make the camera able to rotate around the city 
+        //based on the a,d keys
+        var angle = THREE.MathUtils.degToRad(270);
+        camera.position.x = planeSize * 1.2 * Math.cos(angle);
+        camera.position.z = planeCenter.z + planeSize * 1.2 * Math.sin(angle);
+        camera.position.y = 1;
+        camera.lookAt(0, 0, planeCenter.z);
+        document.onkeypress = function (event) {
+            var x = event.key;
+            if (x == 'a') {
+                angle += 0.1;
+            } else if (x == 'd') {
+                angle -= 0.1;
+            }
+            camera.position.x = planeSize * 1.2 * Math.cos(angle);
+            camera.position.z = planeCenter.z + planeSize * 1.2 * Math.sin(angle);
+            camera.lookAt(0, 0, planeCenter.z);
+        };
+
+
+        // this function loads the context for the canvas
+        function initContext(canvasID, contextType) {
+            var canvas = document.createElement('canvas');
+            var context = canvas.getContext(contextType);
+            return context;
+        }
+
+        // this loads the image, but mainly, when the image loads, it calls readImage()
+        function loadImage(imageSource, context) {
+            var imageObj = new Image();
+            imageObj.onload = function () {
+                context.drawImage(imageObj, 0, 0);
+                // get image data samples each pixel from the first two  x,y coordinates 
+                // to the latter two
+                var imageData = context.getImageData(0, 0, planeSize, planeSize);
+                readImage(imageData);
+            };
+            imageObj.src = imageSource;
+        }
+
+
+        // since this method is only called when the image is loaded, 
+        //we know we have the image pixel data
+        function readImage(imageData) {
+            // since the imageData.data looks like this [r0, g0, b0, a0, r1, g1, b1, a1…]
+            // and since our noise is greyscale (rgb are all the same number)
+            // we only need every fourth number to collect all the red values
+            var noiseData = [];
+            for (var i = 0; i < imageData.data.length; i += 4) {
+                noiseData.push(imageData.data[i]); // just saving red component
+            }
+
+            // now noiseData is a list of semi-random values from 0 to 255
+            // building generation code will go here:
+            var i = 0;
+            for (var r = -planeSize / 2; r < planeSize / 2; r++) {
+                for (var c = -planeSize / 2; c < planeSize / 2; c++) {
+                    if (r < 5) {
+                        var geometry = new THREE.BoxGeometry();
+
+                        if (noiseData[i] > 0 && noiseData[i] < 63) {
+                            var uniforms = {
+                                texture1: { type: "t", value: THREE.ImageUtils.loadTexture("building1.jpg") },
+                            };
+                        } else if (noiseData[i] > 63 && noiseData[i] < 126) {
+                            var uniforms = {
+                                texture1: { type: "t", value: THREE.ImageUtils.loadTexture("building2.jpg") },
+                            };
+                        } else if (noiseData[i] > 126 && noiseData[i] < 189) {
+                            var uniforms = {
+                                texture1: { type: "t", value: THREE.ImageUtils.loadTexture("building3.jpg") },
+                            };
+                        } else if (noiseData[i] > 189 && noiseData[i] < 255) {
+                            var uniforms = {
+                                texture1: { type: "t", value: THREE.ImageUtils.loadTexture("building4.jpg") },
+                            };
+                        }
+
+                        var material = new THREE.ShaderMaterial({
+                            uniforms: uniforms,
+                            vertexShader: document.getElementById('vertexShader').textContent, fragmentShader: document.getElementById('fragmentShader').textContent
+                        });
+
+                        var cube = new THREE.Mesh(geometry, material);
+                        cube.scale.y = Math.random() * (noiseData[i] / 255 * 10);
+                        cube.scale.x = .7;
+                        cube.scale.z = .7;
+                        cube.position.z = planeCenter.z + c + cube.scale.z / 2;
+                        cube.position.x = r + cube.scale.x / 2;
+                        cube.position.y = planeCenter.y + cube.scale.y / 2;
+                        scene.add(cube);
+                        i++;
+                    }
+                }
+            }
+
+        }
+
+        var context = initContext('canvas', '2d'); // initialize the canvas
+        loadImage('perlin_34_34.jpg', context); // load the perlin image
+
+        function animate(time) {
+            if (matShader) matShader.uniforms.time.value = time / 1000;
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
+</body>
+
+</html>
