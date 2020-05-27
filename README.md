@@ -91,6 +91,8 @@ Lab8:
 2. Video :https://drive.google.com/open?id=1KfSR4IxVov8FZQp4fs8BMqo-dYHRQpsm
 3. The inspiration is the coast city I found in the picture. The coast line is stright. so it is more easy to implement. And Also, I added the blue sky in the air. The building is different in the picture. So I added four different textures in the scene.
 
+My partner: My precedural city is based on Venice. I changed the position of the buildings that aloows all the building to be built on grass, and the plane was changerd to water like texture. AS a result, it looks like a city over rivers.
+
 
 
 
