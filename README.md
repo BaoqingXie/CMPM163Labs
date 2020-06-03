@@ -85,13 +85,20 @@ Which part of a tutorial did your partner find most challenging? creative
 Which part of a tutorial did your partner find most interesting? creating the wave
 We did not help each other in the lab.
 
---------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 Lab8:
 1. ![](ImagesForReadMe/Lab8.jfif)
 2. Video :https://drive.google.com/open?id=1KfSR4IxVov8FZQp4fs8BMqo-dYHRQpsm
 3. The inspiration is the coast city I found in the picture. The coast line is stright. so it is more easy to implement. And Also, I added the blue sky in the air. The building is different in the picture. So I added four different textures in the scene.
 
 My partner: My precedural city is based on Venice. I changed the position of the buildings that aloows all the building to be built on grass, and the plane was changerd to water like texture. AS a result, it looks like a city over rivers.
+
+---------------------------------------------------------------------------------------
+Lab9:
+1. ![](ImagesForReadMe/Lab91.jfif)
+![](ImagesForReadMe/Lab92.jfif)
+2. ![](ImagesForReadMe/Lab93.jfif)
+3. My own L-system is based on the fractal plant system. I modify its rule to F-> FFF-[-F+F+F]-[+F-F-F]. This is making an animal eye looking image. It seemed pretty cool to me. I also changed the angle to 5 degree in order to make it draw the circle more clearly. The color of line is depending on the index of the the F in the array.
 
 
 

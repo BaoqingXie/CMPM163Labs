@@ -43,7 +43,7 @@ public class L_system_generator : MonoBehaviour
 
     IEnumerator GenerateLSystem(){
         int count = 0;
-        while(count < 3){
+        while(count < 5){
             if(!isGenerating){
                 isGenerating = true;
                 StartCoroutine(Generate());
@@ -79,7 +79,11 @@ public class L_system_generator : MonoBehaviour
             if(currentCharacter == 'F' || currentCharacter == 'G'){
                 Vector3 initialPosition = transform.position;
                 transform.Translate(Vector3.forward * length);
-                Debug.DrawLine(initialPosition, transform.position, Color.yellow, 10000f, false);
+                if(i%2 == 0){
+                Debug.DrawLine(initialPosition, transform.position, Color.red, 10000f, false);
+                }else{
+                Debug.DrawLine(initialPosition, transform.position, Color.blue, 10000f, false);
+                }
                 yield return null;
             }else if(currentCharacter == '+'){
                 transform.Rotate(Vector3.up * angle);
