@@ -20,6 +20,7 @@ public class Instant : MonoBehaviour
             _sampleCube[i] = _instanceSampleCube;
         }
         
+        
     }
 
     // Update is called once per frame
