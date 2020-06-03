@@ -95,9 +95,9 @@ My partner: My precedural city is based on Venice. I changed the position of the
 
 ---------------------------------------------------------------------------------------
 Lab9:
-1. ![](ImagesForReadMe/Lab91.jfif)
-![](ImagesForReadMe/Lab92.jfif)
-2. ![](ImagesForReadMe/Lab93.jfif)
+1. ![](ImagesForReadMe/Lab91.png)
+![](ImagesForReadMe/Lab92.png)
+2. ![](ImagesForReadMe/Lab93.png)
 3. My own L-system is based on the fractal plant system. I modify its rule to F-> FFF-[-F+F+F]-[+F-F-F]. This is making an animal eye looking image. It seemed pretty cool to me. I also changed the angle to 5 degree in order to make it draw the circle more clearly. The color of line is depending on the index of the the F in the array.
 
 
